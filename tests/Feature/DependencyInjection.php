@@ -8,15 +8,11 @@ use Tests\TestCase;
 
 class DependencyInjection extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public function testDependencyInjection()
     {
-        $response = $this->get('/');
+        $foo = new Foo();
+        $bar = new Bar($foo);
 
-        $response->assertStatus(200);
+        self::assertEquals('Foo and Bar', $bar->bar());
     }
 }
