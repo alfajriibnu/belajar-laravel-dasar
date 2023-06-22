@@ -13,7 +13,7 @@ use Tests\TestCase;
 
 class ServiceContainerTest extends TestCase
 {
-   public function testDependencyInjection()
+   public function testDependency()
    {
         $foo1 = $this->app->make(Foo::class);
         $foo2 = $this->app->make(Foo::class);
@@ -67,5 +67,13 @@ class ServiceContainerTest extends TestCase
 
       self::assertSame($person, $person1);
       self::assertSame($person1, $person2);
+   }
+
+   public function testDependencyInjection()
+   {
+      $foo = $this->app->make(Foo::class);
+      $bar = $this->app->make(Bar::class);
+
+      self::assertNotSame($foo, $bar->foo);
    }
 }
