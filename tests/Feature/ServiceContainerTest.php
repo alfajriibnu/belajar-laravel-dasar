@@ -53,4 +53,19 @@ class ServiceContainerTest extends TestCase
      self::assertSame($person1, $person2);
 
    }
+
+   public function testInstance()
+   {
+      $person = new Person("Ibnu", "Alfajri");
+      $this->app->instance(Person::class, $person);
+
+      $person1 = $this->app->make(Person::class);
+      $person2 = $this->app->make(Person::class);
+
+      self::assertEquals("Ibnu", $person1->firstName);
+      self::assertEquals("Ibnu", $person2->firstName);
+
+      self::assertSame($person, $person1);
+      self::assertSame($person1, $person2);
+   }
 }
