@@ -44,8 +44,8 @@ class ServiceContainerTest extends TestCase
         return new Person("Ibnu", "Alfajri");
      });
 
-     $person1 = $this->app->make(Person::class);
-     $person2 = $this->app->make(Person::class);
+     $person1 = $this->app->make(Person::class); // tempat penyimpanannya berbeda meski datanya sama.
+     $person2 = $this->app->make(Person::class); // tempat penyimpanannya berbeda meski datanya sama.
 
      self::assertEquals('Ibnu', $person1->firstName);
      self::assertEquals('Ibnu', $person2->firstName);
@@ -56,10 +56,10 @@ class ServiceContainerTest extends TestCase
    public function testInstance()
    {
       $person = new Person("Ibnu", "Alfajri");
-      $this->app->instance(Person::class, $person);
+      $this->app->instance(Person::class, $person); //menginstansi semuanya dan dapat digunakan semua pada variable yg dibuat
 
-      $person1 = $this->app->make(Person::class);
-      $person2 = $this->app->make(Person::class);
+      $person1 = $this->app->make(Person::class); //$person
+      $person2 = $this->app->make(Person::class); //$person
 
       self::assertEquals("Ibnu", $person1->firstName);
       self::assertEquals("Ibnu", $person2->firstName);
@@ -95,6 +95,5 @@ class ServiceContainerTest extends TestCase
 
     self::assertEquals('Halo Ibnu', $helloService->hello('Ibnu'));
    }
-
 
 }
