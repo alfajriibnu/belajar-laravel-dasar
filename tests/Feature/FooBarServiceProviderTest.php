@@ -7,7 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Data\Foo;
 use App\Data\Bar;
-
+use App\Services\HelloService;
+use App\Services\HelloServiceIndonesia;
 
 class FooBarServiceProviderTest extends TestCase
 {
@@ -25,5 +26,10 @@ class FooBarServiceProviderTest extends TestCase
 
      self::assertSame($foo1, $bar1->foo);
      self::assertSame($foo2, $bar2->foo);
+   }
+
+   public function testEmpty()
+   {
+     self::assertTrue(true);
    }
 }
