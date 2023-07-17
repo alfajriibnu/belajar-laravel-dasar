@@ -32,4 +32,17 @@ class FacadesTest extends TestCase
 
         var_dump($config->all());
     }
+
+    public function testFacadesMock()
+    {
+        Config::shouldReceive('get')
+        ->with('contoh.author.first')
+        ->andReturn('Ibnu Keren');
+
+        $firstName = Config::get('contoh.author.first');
+
+        self::assertEquals('Ibnu Keren', $firstName);
+
+    }
+
 }
