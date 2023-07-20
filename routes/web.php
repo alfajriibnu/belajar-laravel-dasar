@@ -33,7 +33,13 @@ Route::get('/hello-again', function(){
     return view('hello', ['name' => 'Ibnu']);
 });
 
-Route::get('/hello-world', function(){
-    return view('hello.world', ['name' => 'Ibnu']);
+Route::get('/products/{id}', function($productId){
+    return "Product $productId";
 });
+
+Route::get('/products/{product}/items/{item}', function($productId, $itemId){
+    return "Product $productId, Item $itemId";
+});
+
+
 
