@@ -47,4 +47,29 @@ class RoutingTest extends TestCase
         $this->get('/products/2/items/YYY')
         ->assertSeeText("Product 2, Item YYY");
     }
+
+    public function testRouteParameterRegex()
+    {
+        $this->get('/categories/100')
+        ->assertSeeText('Category 100');
+
+        $this->get('/categories/Ibnu')
+        ->assertSeeText('404 by Programmer Zaman Now');
+    }
+
+    public function testRouteParameterOptional()
+    {
+        $this->get('/users/alfajri')
+        ->assertSeeText('User alfajri');
+
+        $this->get('/users/')
+        ->assertSeeText('User 404');
+    }
+
+    public function testRoutingConflict()
+    {
+
+        $this->get('/conflict/ibnu')
+        ->assertSeeText('Conflict Ibnu Al Fajri');
+    }
 }

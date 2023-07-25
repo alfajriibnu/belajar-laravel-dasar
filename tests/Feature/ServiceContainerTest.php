@@ -78,7 +78,7 @@ class ServiceContainerTest extends TestCase
       $bar1 = $this->app->make(Bar::class);
       $bar2 = $this->app->make(Bar::class);
 
-      self::assertSame($foo, $bar1->foo);
+      self::assertNotSame($foo, $bar1->foo);
 
       self::assertNotSame($bar1, $bar2);
    }

@@ -41,5 +41,22 @@ Route::get('/products/{product}/items/{item}', function($productId, $itemId){
     return "Product $productId, Item $itemId";
 });
 
+Route::get('/categories/{id}', function($categoriesId){
+    return "Category $categoriesId";
+})->where('id', '[0-9]+');
+
+Route::get('/users/{id?}', function($userId = '404'){
+    return "User $userId";
+});
+
+Route::get('/conflict/ibnu', function(){
+    return 'Conflict Ibnu Al Fajri';
+});
+
+Route::get('/conflict/{name}', function($name){
+    return 'Conflict $name';
+});
+
+
 
 
